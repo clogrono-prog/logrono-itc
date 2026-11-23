@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CS 1130 - Introduction to Computing | Student Assignments</title>
+<style>
+  :root { --bg:#f5f6fa; --card:#fff; --text:#1d2433; --muted:#667085; --accent:#1f4fd8; --border:#dde1ea; --ok:#0a7a3d; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#12151c; --card:#1b2030; --text:#e8ebf3; --muted:#9aa4b8; --accent:#7b9cff; --border:#2c3348; --ok:#4cd388; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: Arial, Helvetica, sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
+  header { text-align:center; padding:32px 16px 8px; }
+  header h1 { margin:0; font-size:1.8rem; letter-spacing:1px; }
+  header p { margin:6px 0; color:var(--muted); }
+  nav { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; padding:12px; }
+  nav a { text-decoration:none; color:var(--accent); border:1px solid var(--border); background:var(--card); padding:8px 14px; border-radius:20px; font-size:.9rem; }
+  main { max-width:760px; margin:0 auto; padding:8px 16px 40px; }
+  section { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; margin:18px 0; }
+  h2 { margin-top:0; font-size:1.25rem; }
+  h3 { font-size:1rem; margin:20px 0 8px; }
+  label { display:block; font-size:.9rem; margin:10px 0 4px; }
+  input, select { width:100%; padding:9px; border:1px solid var(--border); border-radius:8px; background:var(--bg); color:var(--text); font-size:1rem; }
+  button { margin-top:12px; padding:9px 16px; border:0; border-radius:8px; background:var(--accent); color:#fff; font-size:.95rem; cursor:pointer; }
+  button:hover { opacity:.9; }
+  .row { display:flex; gap:12px; flex-wrap:wrap; }
+  .row > div { flex:1; min-width:180px; }
+  .result { margin-top:12px; padding:10px 12px; border-left:4px solid var(--ok); background:var(--bg); border-radius:6px; min-height:20px; word-break:break-word; }
+  .error { border-left-color:#d92d20; color:#d92d20; }
+  table { width:100%; border-collapse:collapse; font-size:.9rem; }
+  td { padding:5px 0; border-bottom:1px solid var(--border); }
+  td:last-child { text-align:right; }
+  .note { font-size:.8rem; color:var(--muted); }
+  footer { text-align:center; color:var(--muted); font-size:.85rem; padding:20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>CS 1130 - Introduction to Computing</h1>
+  <p><em>Student Assignments by [Your Name] - [Your Section]</em></p>
+  <p>Ateneo de Davao University &middot; Computer Studies Division</p>
+</header>
+
+<nav>
+  <a href="#a1">Assignment #1</a>
+  <a href="#a2">Assignment #2</a>
+  <a href="#a3">Assignment #3</a>
+  <a href="#a4">Assignment #4</a>
+</nav>
+
+<main>
+
+<!-- ============ ASSIGNMENT 1 ============ -->
+<section id="a1">
+  <h2>Assignment #1 - Conversion</h2>
+
+  <h3>Celsius &harr; Fahrenheit</h3>
+  <div class="row">
+    <div>
+      <label for="c2f">Celsius (&deg;C)</label>
+      <input type="number" id="c2f" step="any">
+      <button onclick="celsiusToF()">Convert to &deg;F</button>
+      <div class="result" id="c2fOut"></div>
+    </div>
+    <div>
+      <label for="f2c">Fahrenheit (&deg;F)</label>
+      <input type="number" id="f2c" step="any">
+      <button onclick="fToCelsius()">Convert to &deg;C</button>
+      <div class="result" id="f2cOut"></div>
+    </div>
+  </div>
+
+  <h3>Meters &harr; Feet</h3>
+  <div class="row">
+    <div>
+      <label for="m2f">Meters (m)</label>
+      <input type="number" id="m2f" step="any">
+      <button onclick="metersToFeet()">Convert to Feet</button>
+      <div class="result" id="m2fOut"></div>
+    </div>
+    <div>
+      <label for="f2m">Feet (ft)</label>
+      <input type="number" id="f2m" step="any">
+      <button onclick="feetToMeters()">Convert to Meters</button>
+      <div class="result" id="f2mOut"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ASSIGNMENT 2 ============ -->
+<section id="a2">
+  <h2>Assignment #2 - Income Tax Calculator</h2>
+  <label for="income">Annual Taxable Income (PHP)</label>
+  <input type="number" id="income" min="0" step="any" placeholder="e.g. 600000">
+  <button onclick="computeTax()">Compute Income Tax</button>
+  <div class="result" id="taxOut"></div>
+  <p class="note">Uses the Philippine graduated income tax rates (TRAIN Law, effective 2023 onward):
+    &le;250,000: 0% &middot; 250,001-400,000: 15% of excess over 250,000 &middot;
+    400,001-800,000: 22,500 + 20% of excess over 400,000 &middot;
+    800,001-2,000,000: 102,500 + 25% of excess over 800,000 &middot;
+    2,000,001-8,000,000: 402,500 + 30% of excess over 2,000,000 &middot;
+    above 8,000,000: 2,202,500 + 35% of excess over 8,000,000.</p>
+</section>
+
+<!-- ============ ASSIGNMENT 3 ============ -->
+<section id="a3">
+  <h2>Assignment #3 - Factorial, Sum and Average of First N Natural Numbers</h2>
+  <label for="n">Enter N (positive whole number)</label>
+  <input type="number" id="n" min="1" step="1" placeholder="e.g. 5">
+  <div class="row">
+    <div><button onclick="factorialWhile()">Factorial (While Loop)</button></div>
+    <div><button onclick="sumDoWhile()">Sum (Do While Loop)</button></div>
+    <div><button onclick="averageFor()">Average (For Loop)</button></div>
+  </div>
+  <div class="result" id="loopOut"></div>
+</section>
+
+<!-- ============ ASSIGNMENT 4 ============ -->
+<section id="a4">
+  <h2>Assignment #4 - Simple Payroll</h2>
+  <div class="row">
+    <div>
+      <label for="empName">Employee Name</label>
+      <input type="text" id="empName" placeholder="Juan Dela Cruz">
+    </div>
+    <div>
+      <label for="rate">Hourly Rate (PHP)</label>
+      <input type="number" id="rate" min="0" step="any" placeholder="e.g. 120">
+    </div>
+    <div>
+      <label for="hours">Hours Worked (this week)</label>
+      <input type="number" id="hours" min="0" step="any" placeholder="e.g. 45">
+    </div>
+  </div>
+  <button onclick="computePayroll()">Compute Payroll</button>
+  <div class="result" id="payOut"></div>
+  <p class="note">Assumptions: first 40 hours are regular pay; hours beyond 40 are overtime at 125%.
+    Deductions: SSS 4.5%, PhilHealth 2.5%, Pag-IBIG 2% of gross pay.</p>
+</section>
+
+</main>
+
+<footer>CS 1130 &middot; Ateneo de Davao University &middot; Due November 24, 2026</footer>
+
+<script>
+  // ---------- helpers ----------
+  const $ = id => document.getElementById(id);
+  const money = x => "PHP " + x.toLocaleString("en-PH", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  function show(id, msg, isError) {
+    const el = $(id);
+    el.textContent = msg;
+    el.classList.toggle("error", !!isError);
+  }
+  function readNumber(inputId, outId) {
+    const raw = $(inputId).value;
+    const v = parseFloat(raw);
+    if (raw === "" || isNaN(v)) { show(outId, "Please enter a valid number.", true); return null; }
+    return v;
+  }
+
+  // ---------- Assignment 1 ----------
+  function celsiusToF() {
+    const c = readNumber("c2f", "c2fOut"); if (c === null) return;
+    show("c2fOut", c + " °C = " + (c * 9 / 5 + 32).toFixed(2) + " °F");
+  }
+  function fToCelsius() {
+    const f = readNumber("f2c", "f2cOut"); if (f === null) return;
+    show("f2cOut", f + " °F = " + ((f - 32) * 5 / 9).toFixed(2) + " °C");
+  }
+  function metersToFeet() {
+    const m = readNumber("m2f", "m2fOut"); if (m === null) return;
+    show("m2fOut", m + " m = " + (m * 3.28084).toFixed(2) + " ft");
+  }
+  function feetToMeters() {
+    const f = readNumber("f2m", "f2mOut"); if (f === null) return;
+    show("f2mOut", f + " ft = " + (f / 3.28084).toFixed(2) + " m");
+  }
+
+  // ---------- Assignment 2 ----------
+  function computeTax() {
+    const income = readNumber("income", "taxOut"); if (income === null) return;
+    if (income < 0) { show("taxOut", "Income cannot be negative.", true); return; }
+    let tax;
+    if (income <= 250000)       tax = 0;
+    else if (income <= 400000)  tax = (income - 250000) * 0.15;
+    else if (income <= 800000)  tax = 22500 + (income - 400000) * 0.20;
+    else if (income <= 2000000) tax = 102500 + (income - 800000) * 0.25;
+    else if (income <= 8000000) tax = 402500 + (income - 2000000) * 0.30;
+    else                        tax = 2202500 + (income - 8000000) * 0.35;
+    show("taxOut",
+      "Taxable income: " + money(income) + " | Income tax due: " + money(tax) +
+      " | Net income: " + money(income - tax));
+  }
+
+  // ---------- Assignment 3 ----------
+  function readN() {
+    const n = parseInt($("n").value, 10);
+    if (isNaN(n) || n < 1) { show("loopOut", "Please enter a positive whole number for N.", true); return null; }
+    return n;
+  }
+
+  // Factorial using a WHILE loop (BigInt so large values stay exact)
+  function factorialWhile() {
+    const n = readN(); if (n === null) return;
+    if (n > 500) { show("loopOut", "Please use N of 500 or less for factorial.", true); return; }
+    let result = 1n, i = 1n;
+    while (i <= BigInt(n)) {
+      result *= i;
+      i++;
+    }
+    show("loopOut", n + "! = " + result.toString());
+  }
+
+  // Sum using a DO WHILE loop
+  function sumDoWhile() {
+    const n = readN(); if (n === null) return;
+    let sum = 0, i = 1;
+    do {
+      sum += i;
+      i++;
+    } while (i <= n);
+    show("loopOut", "Sum of the first " + n + " natural numbers = " + sum);
+  }
+
+  // Average using a FOR loop
+  function averageFor() {
+    const n = readN(); if (n === null) return;
+    let sum = 0;
+    for (let i = 1; i <= n; i++) {
+      sum += i;
+    }
+    show("loopOut", "Average of the first " + n + " natural numbers = " + (sum / n));
+  }
+
+  // ---------- Assignment 4 ----------
+  function computePayroll() {
+    const name = $("empName").value.trim() || "Employee";
+    const rate = parseFloat($("rate").value);
+    const hours = parseFloat($("hours").value);
+    if (isNaN(rate) || isNaN(hours) || rate < 0 || hours < 0) {
+      show("payOut", "Please enter a valid hourly rate and hours worked.", true);
+      return;
+    }
+    const regHours = Math.min(hours, 40);
+    const otHours = Math.max(hours - 40, 0);
+    const regPay = regHours * rate;
+    const otPay = otHours * rate * 1.25;
+    const gross = regPay + otPay;
+    const sss = gross * 0.045, phil = gross * 0.025, pagibig = gross * 0.02;
+    const totalDed = sss + phil + pagibig;
+    const net = gross - totalDed;
+
+    const rows = [
+      ["Regular pay (" + regHours + " hrs)", regPay],
+      ["Overtime pay (" + otHours + " hrs @ 125%)", otPay],
+      ["Gross pay", gross],
+      ["SSS (4.5%)", -sss],
+      ["PhilHealth (2.5%)", -phil],
+      ["Pag-IBIG (2%)", -pagibig],
+      ["Total deductions", -totalDed],
+      ["NET PAY", net]
+    ];
+    const el = $("payOut");
+    el.classList.remove("error");
+    el.innerHTML = "<strong>Payslip - " + name.replace(/</g, "&lt;") + "</strong><table>" +
+      rows.map(r => "<tr><td>" + r[0] + "</td><td>" + (r[1] < 0 ? "-" : "") + money(Math.abs(r[1])) + "</td></tr>").join("") +
+      "</table>";
+  }
+</script>
+</body>
+</html>
